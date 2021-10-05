@@ -49,7 +49,9 @@ public class LoginServiceImpl extends BugTrackerService{
 	public Object getResource(Map<String, Object> requestData, HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 		
 		if(requestData == null) {
-			return "Request Data is Null";
+			BaseDto dto = new BaseDto();
+			dto.setError("BG00000", messageUtil.fetchMessageDescription("BG00000"));
+			return dto;
 		}
 		
 		try {

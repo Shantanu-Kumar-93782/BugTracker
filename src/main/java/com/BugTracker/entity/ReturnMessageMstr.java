@@ -27,7 +27,7 @@ public class ReturnMessageMstr {
 		this.msgId = msgId;
 	}
 
-	@Column(name="MSG_DESC")
+	@Column(name="MSG_DESCRIPTION")
 	public String getMsgDesc() {
 		return msgDesc;
 	}

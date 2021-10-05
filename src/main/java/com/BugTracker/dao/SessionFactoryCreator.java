@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.BugTracker.entity.MemberMstr;
+import com.BugTracker.entity.ProjectUserMap;
+import com.BugTracker.entity.ProjectsMstr;
 import com.BugTracker.entity.ReturnMessageMstr;
 import com.BugTracker.entity.SystemFiles;
 import com.BugTracker.entity.UserProfile;
@@ -22,6 +24,8 @@ public class SessionFactoryCreator {
 					.addAnnotatedClass(MemberMstr.class)
 					.addAnnotatedClass(SystemFiles.class)
 					.addAnnotatedClass(ReturnMessageMstr.class)
+					.addAnnotatedClass(ProjectsMstr.class)
+					.addAnnotatedClass(ProjectUserMap.class)
 					.buildSessionFactory();
 		}
 	}
@@ -35,6 +39,11 @@ public class SessionFactoryCreator {
 	
 	public void closeSession(Session currentSession) {
 		currentSession.close();
+	}
+	
+	public Session getSessionWihtoutTransactionInitialized() {
+		Session session = sessionFactory.openSession();
+		return session;
 	}
 //	@SuppressWarnings({"unchecked" })
 //	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
